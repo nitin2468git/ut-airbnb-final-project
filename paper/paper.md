@@ -19,7 +19,7 @@ Short-term rental platforms like Airbnb have become a standard fixture of the ur
 
 I study Austin, Texas. Austin is a useful local lens for three reasons. It has a large and stable Airbnb market. It has an active short-term rental policy environment: the City of Austin has revised its short-term rental ordinance multiple times in the last decade and continues to publish enforcement data (City of Austin, 2023). And it is where I live, which means the local geography (downtown, the Drag, East Austin, the Domain) is something I can sanity-check against the model's predictions rather than taking them on faith.
 
-The economic theory behind this work is hedonic pricing. Rosen (1974) formalized the idea that the price of a heterogeneous good can be decomposed into the marginal contributions of its attributes, and Sheppard (1999) surveyed how this framework has been applied to housing markets. A short-term rental listing fits naturally into this frame: an entire two-bedroom home near downtown is not the same product as a shared room in the suburbs, and the attribute bundle is what determines the price. Prior work on Airbnb specifically has used hedonic-style regressions to study neighborhood effects (Wachsmuth & Weisler, 2018), the causal effect of Airbnb on local rents (Barron et al., 2021; Horn & Merante, 2017), and the platform's competitive effect on hotels (Zervas et al., 2017). Gurran and Phibbs (2017) review how urban planners should respond to these effects, and Sundararajan (2016) gives the broader shared-economy context. Applied machine-learning work on Airbnb pricing is a newer, smaller literature: Kalehbasti et al. (2019) combine tabular features with review-sentiment features, Tang et al. (2020) explore neural-network variants on short-term rental data, and Yang et al. (2018) examine how hotel-location characteristics translate into guest-side satisfaction.
+The economic theory behind this work is hedonic pricing. Rosen (1974) formalized the idea that the price of a heterogeneous good can be decomposed into the marginal contributions of its attributes, and Sheppard (1999) surveyed how this framework has been applied to housing markets. A short-term rental listing fits naturally into this frame: an entire two-bedroom home near downtown is not the same product as a shared room in the suburbs, and the attribute bundle is what determines the price. Prior work on Airbnb specifically has used hedonic-style regressions to study neighborhood effects (Wachsmuth & Weisler, 2018), the causal effect of Airbnb on local rents (Barron et al., 2021; Horn & Merante, 2017), and the platform's competitive effect on hotels (Zervas et al., 2017). Gurran and Phibbs (2017) review how urban planners should respond to these effects, and Sundararajan (2016) gives the broader shared-economy context. Applied machine-learning work on Airbnb pricing is a newer, smaller literature: Kalehbasti et al. (2019) combine tabular features with review-sentiment features, Xu and Zhang (2022) apply neural-network approaches to rent-index forecasting on a related housing market, and Yang et al. (2018) examine how hotel-location characteristics translate into guest-side satisfaction.
 
 What has shifted since Rosen's era is the toolkit. Classical hedonic regressions are linear in feature space (often after a log transform of price) and report clean coefficients that map directly to a dollar contribution per feature. Modern gradient-boosted trees like XGBoost (Chen & Guestrin, 2016) consistently outperform linear models on tabular regression, but at the cost of interpretability. Deep learning has made enormous gains on images and text (LeCun et al., 2015) but, as Shwartz-Ziv and Armon (2022) and Gorishniy et al. (2021) argue, has not reliably beaten gradient-boosted trees on tabular data. For pricing applications this matters: a regulator or a host wants to know not just the predicted price, but why. The SHAP framework (Lundberg & Lee, 2017) has partially closed the interpretability gap for tree models, which is why I use it here.
 
@@ -59,7 +59,7 @@ The full pipeline uses scikit-learn (Pedregosa et al., 2011), XGBoost (Chen & Gu
 
 ### Data source and snapshot
 
-All data in this paper come from Inside Airbnb, an open-data project that scrapes publicly visible Airbnb listings and republishes them under CC0 (Cox, 2026; Cox & Haar, 2015). I use the Austin, Texas snapshot dated 2025-09-16, which is the most recent release available at the time of writing. Inside Airbnb has been used extensively in the academic literature on short-term rentals, including by Wachsmuth and Weisler (2018), Horn and Merante (2017), Barron et al. (2021), and the Austin-focused policy work of Nieuwland and van Melik (2020). The full listings file is a gzipped CSV of 10,533 rows and 79 columns, covering every active Austin listing on the snapshot date.
+All data in this paper come from Inside Airbnb, an open-data project that scrapes publicly visible Airbnb listings and republishes them under CC0 (Cox, 2026). I use the Austin, Texas snapshot dated 2025-09-16, which is the most recent release available at the time of writing. Inside Airbnb has been used extensively in the academic literature on short-term rentals, including by Wachsmuth and Weisler (2018), Horn and Merante (2017), Barron et al. (2021), and the Austin-focused policy work of Nieuwland and van Melik (2020). The full listings file is a gzipped CSV of 10,533 rows and 79 columns, covering every active Austin listing on the snapshot date.
 
 I deliberately did not scrape Airbnb directly or use any paid data provider. Inside Airbnb's scraper and schema are documented, the data is reproducible from the project's public archive, and using it makes this paper easy for others to replicate.
 
@@ -137,7 +137,7 @@ The residual density plot in Figure 5 shows that XGBoost and Random Forest have 
 
 The central finding is straightforward. On the 2025 Austin Inside Airbnb snapshot, XGBoost produces the most accurate test-set predictions of the four models I tried, with log-price RMSE of 0.38 and a mean absolute dollar error of $68 on listings with a median price of $162. The ranking (XGBoost, Random Forest, Ridge, MLP) is consistent with what the broader tabular-regression literature predicts. The SHAP attributions on the winning model land on exactly the features that hedonic pricing theory (Rosen, 1974; Sheppard, 1999) tells us should drive short-term rental prices: capacity (bathrooms, bedrooms, accommodates), location (target-encoded neighborhood, distance to downtown), and product differentiation (entire home versus shared room, hotel versus private home). This is not a novel substantive claim, but it is a reassuring sanity check: a modern tree-based model trained on raw listing attributes rediscovers the same economic structure that fifty years of housing economics has already documented.
 
-The specific result I find most informative for the paper's second question is the neural-network comparison. A well-configured feed-forward MLP with dropout and early stopping did worse than Ridge regression on my data. For a student reading this paper, the useful takeaway is that "deeper is better" is not a reliable prior on tabular regression problems. Shwartz-Ziv and Armon (2022) argue this explicitly, and Gorishniy et al. (2021) report similar patterns across a large benchmark suite. My result is one more data point for that argument on a specific, publicly reproducible dataset, and it is broadly consistent with the applied ML literature on Airbnb pricing where feature engineering and ensemble methods have tended to dominate over end-to-end neural approaches (Kalehbasti et al., 2019; Tang et al., 2020).
+The specific result I find most informative for the paper's second question is the neural-network comparison. A well-configured feed-forward MLP with dropout and early stopping did worse than Ridge regression on my data. For a student reading this paper, the useful takeaway is that "deeper is better" is not a reliable prior on tabular regression problems. Shwartz-Ziv and Armon (2022) argue this explicitly, and Gorishniy et al. (2021) report similar patterns across a large benchmark suite. My result is one more data point for that argument on a specific, publicly reproducible dataset, and it is broadly consistent with the applied ML literature on Airbnb and rental pricing where feature engineering and ensemble methods have tended to dominate over end-to-end neural approaches (Kalehbasti et al., 2019; Xu & Zhang, 2022).
 
 ### Interpretability versus accuracy
 
@@ -145,7 +145,7 @@ The gap between Ridge and XGBoost on my data is real: about four cents of log-RM
 
 ### Policy implications
 
-Austin has been revising its short-term rental ordinance since the first version passed in 2012 (Nieuwland & van Melik, 2020; City of Austin, 2023). A predictive model like the one in this paper is not a policy tool in itself, but two of its outputs are relevant to the ongoing policy debate. First, the target-encoded neighborhood feature is one of the top five SHAP contributors, which quantifies the location premium that a host captures; this is consistent with the broader urban-economics finding that local amenities and unobserved location quality drive a large share of residential price variation (Chen & Rosenthal, 2019), and with the spatial-econometric framing used by Anselin (2013). Second, the `room_type_Entire home/apt` one-hot is among the largest positive coefficients in Ridge and shows up consistently on the positive side in SHAP. Entire-home listings are precisely the category that Austin's ordinance most tightly regulates (through its distinction between owner-occupied Type 1 listings and non-owner-occupied Type 2 listings), and the fact that they command a substantial price premium over private-room listings is consistent with the hypothesis that STR operators have a strong profit incentive to convert long-term rentals into non-owner-occupied short-term listings. Lee (2016) documents the same premium structure in Los Angeles and argues it accelerates affordable-housing loss in constrained markets. I do not claim a causal estimate of that effect from this paper; I note that the model's output is consistent with the framing used by the city's policy work.
+Austin has been revising its short-term rental ordinance since the first version passed in 2012 (Nieuwland & van Melik, 2020; City of Austin, 2023). A predictive model like the one in this paper is not a policy tool in itself, but two of its outputs are relevant to the ongoing policy debate. First, the target-encoded neighborhood feature is one of the top five SHAP contributors, which quantifies the location premium that a host captures; this is consistent with the broader urban-economics finding that local amenities drive a large share of residential price variation and migration decisions (Chen & Rosenthal, 2008), and with the spatial-econometric framing used by Anselin (2013). Second, the `room_type_Entire home/apt` one-hot is among the largest positive coefficients in Ridge and shows up consistently on the positive side in SHAP. Entire-home listings are precisely the category that Austin's ordinance most tightly regulates (through its distinction between owner-occupied Type 1 listings and non-owner-occupied Type 2 listings), and the fact that they command a substantial price premium over private-room listings is consistent with the hypothesis that STR operators have a strong profit incentive to convert long-term rentals into non-owner-occupied short-term listings. Lee (2016) documents the same premium structure in Los Angeles and argues it accelerates affordable-housing loss in constrained markets. I do not claim a causal estimate of that effect from this paper; I note that the model's output is consistent with the framing used by the city's policy work.
 
 ### Limitations
 
@@ -179,13 +179,11 @@ Breiman, L. (2001). Random forests. *Machine Learning*, *45*(1), 5–32. https:/
 
 Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 785–794). https://doi.org/10.1145/2939672.2939785
 
-Chen, Y., & Rosenthal, S. S. (2019). Local amenities, unobserved quality, and market assessments of location value. *Journal of Urban Economics*, *109*, 25–38. https://doi.org/10.1016/j.jue.2018.11.005
+Chen, Y., & Rosenthal, S. S. (2008). Local amenities and life-cycle migration: Do people move for jobs or fun? *Journal of Urban Economics*, *64*(3), 519–537. https://doi.org/10.1016/j.jue.2008.05.005
 
 City of Austin Development Services Department. (2023). *Short-term rental ordinance and enforcement report*. https://www.austintexas.gov/department/short-term-rentals
 
 Cox, M. (2026). *Inside Airbnb: Austin, TX listings snapshot* [Dataset]. Inside Airbnb. https://insideairbnb.com/austin
-
-Cox, M., & Haar, K. (2015). Inside Airbnb: Adding data to the debate. *Inside Airbnb Research Notes*. https://insideairbnb.com
 
 Edelman, B., Luca, M., & Svirsky, D. (2017). Racial discrimination in the sharing economy: Evidence from a field experiment. *American Economic Journal: Applied Economics*, *9*(2), 1–22. https://doi.org/10.1257/app.20160213
 
@@ -209,7 +207,7 @@ Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for n
 
 Horn, K., & Merante, M. (2017). Is home sharing driving up rents? Evidence from Airbnb in Boston. *Journal of Housing Economics*, *38*, 14–24. https://doi.org/10.1016/j.jhe.2017.08.002
 
-Kalehbasti, P. R., Nikolenko, L., & Rezaei, H. (2019). Airbnb price prediction using machine learning and sentiment analysis. In *Proceedings of the 2019 International Conference on Machine Learning and Data Mining*.
+Kalehbasti, P. R., Nikolenko, L., & Rezaei, H. (2019). Airbnb price prediction using machine learning and sentiment analysis. *arXiv preprint arXiv:1907.12665*. https://arxiv.org/abs/1907.12665
 
 Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection. In *IJCAI*, *14*(2), 1137–1145.
 
@@ -217,7 +215,7 @@ LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. *Nature*, *521*(7553)
 
 Lee, D. (2016). How Airbnb short-term rentals exacerbate Los Angeles's affordable housing crisis. *Harvard Law & Policy Review*, *10*, 229–253.
 
-Li, J., Moreno, A., & Zhang, D. J. (2020). Agent behavior and the sharing economy: Truthful signals and quality detection. *Production and Operations Management*, *29*(1), 73–92. https://doi.org/10.1111/poms.13089
+Li, J., Moreno, A., & Zhang, D. J. (2015). *Agent behavior in the sharing economy: Evidence from Airbnb* (Ross School of Business Working Paper No. 1298). University of Michigan. https://ssrn.com/abstract=2708279
 
 Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. In *Advances in Neural Information Processing Systems 30* (pp. 4765–4774).
 
@@ -237,11 +235,11 @@ Shwartz-Ziv, R., & Armon, A. (2022). Tabular data: Deep learning is not all you 
 
 Sundararajan, A. (2016). *The sharing economy: The end of employment and the rise of crowd-based capitalism*. MIT Press.
 
-Tang, Y., Wang, B., & Gebraeel, N. (2020). Neural network approaches to short-term rental price prediction. *Expert Systems with Applications*, *144*, 113057. https://doi.org/10.1016/j.eswa.2019.113057
-
 Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. *Journal of the Royal Statistical Society: Series B*, *58*(1), 267–288. https://doi.org/10.1111/j.2517-6161.1996.tb02080.x
 
 Wachsmuth, D., & Weisler, A. (2018). Airbnb and the rent gap: Gentrification through the sharing economy. *Environment and Planning A: Economy and Space*, *50*(6), 1147–1170. https://doi.org/10.1177/0308518X18778038
+
+Xu, X., & Zhang, Y. (2022). Rent index forecasting through neural networks. *Journal of Economic Studies*, *49*(8), 1321–1339. https://doi.org/10.1108/JES-06-2021-0316
 
 Yang, Y., Mao, Z., & Tang, J. (2018). Understanding guest satisfaction with urban hotel location. *Journal of Travel Research*, *57*(2), 243–259. https://doi.org/10.1177/0047287517691153
 
