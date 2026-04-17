@@ -137,7 +137,7 @@ We pull the most recent Austin snapshot from [Inside Airbnb](https://insideairbn
 
 CELLS.append(code("""
 # Step 1.1 — Download the Inside Airbnb Austin listings CSV (only if not cached).
-LISTINGS_URL = "http://data.insideairbnb.com/united-states/tx/austin/2025-12-15/data/listings.csv.gz"
+LISTINGS_URL = "https://data.insideairbnb.com/united-states/tx/austin/2025-09-16/data/listings.csv.gz"
 LISTINGS_PATH = DATA_DIR / "listings.csv.gz"
 
 if not LISTINGS_PATH.exists():
