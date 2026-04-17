@@ -59,7 +59,7 @@ The full pipeline uses scikit-learn (Pedregosa et al., 2011), XGBoost (Chen & Gu
 
 ### Data source and snapshot
 
-All data in this paper come from Inside Airbnb, an open-data project that scrapes publicly visible Airbnb listings and republishes them under CC0 (Cox, 2024). I use the Austin, Texas snapshot dated 2025-09-16, which is the most recent release available at the time of writing. Inside Airbnb has been used extensively in the academic literature on short-term rentals, including by Wachsmuth and Weisler (2018), Horn and Merante (2017), Barron et al. (2021), and the Austin-focused policy work of Nieuwland and van Melik (2020). The full listings file is a gzipped CSV of 10,533 rows and 79 columns, covering every active Austin listing on the snapshot date.
+All data in this paper come from Inside Airbnb, an open-data project that scrapes publicly visible Airbnb listings and republishes them under CC0 (Cox, 2026; Cox & Haar, 2015). I use the Austin, Texas snapshot dated 2025-09-16, which is the most recent release available at the time of writing. Inside Airbnb has been used extensively in the academic literature on short-term rentals, including by Wachsmuth and Weisler (2018), Horn and Merante (2017), Barron et al. (2021), and the Austin-focused policy work of Nieuwland and van Melik (2020). The full listings file is a gzipped CSV of 10,533 rows and 79 columns, covering every active Austin listing on the snapshot date.
 
 I deliberately did not scrape Airbnb directly or use any paid data provider. Inside Airbnb's scraper and schema are documented, the data is reproducible from the project's public archive, and using it makes this paper easy for others to replicate.
 
