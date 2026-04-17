@@ -1,0 +1,42 @@
+# Data
+data/*.csv
+data/*.csv.gz
+data/*.zip
+data/raw/
+data/processed/*.pkl
+data/processed/*.parquet
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+.env
+
+# macOS
+.DS_Store
+
+# Model artifacts
+*.pt
+*.pth
+*.ckpt
+*.h5
+*.joblib
+
+# Paper build artifacts
+paper/paper.docx
+paper/paper.pdf
+paper/*.aux
+paper/*.log
+
+# Editor
+.vscode/
+.idea/
+*.swp
