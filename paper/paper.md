@@ -157,6 +157,86 @@ The code and paper are at https://github.com/nitin2468git/ut-airbnb-final-projec
 
 ---
 
+## References
+
+Anselin, L. (2013). *Spatial econometrics: Methods and models*. Springer.
+
+Barron, K., Kung, E., & Proserpio, D. (2021). The effect of home-sharing on house prices and rents: Evidence from Airbnb. *Marketing Science*, *40*(1), 23–47. https://doi.org/10.1287/mksc.2020.1227
+
+Breiman, L. (2001). Random forests. *Machine Learning*, *45*(1), 5–32. https://doi.org/10.1023/A:1010933404324
+
+Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. In *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining* (pp. 785–794). https://doi.org/10.1145/2939672.2939785
+
+Chen, Y., & Rosenthal, S. S. (2019). Local amenities, unobserved quality, and market assessments of location value. *Journal of Urban Economics*, *109*, 25–38. https://doi.org/10.1016/j.jue.2018.11.005
+
+City of Austin Development Services Department. (2023). *Short-term rental ordinance and enforcement report*. https://www.austintexas.gov/department/short-term-rentals
+
+Cox, M. (2026). *Inside Airbnb: Austin, TX listings snapshot* [Dataset]. Inside Airbnb. https://insideairbnb.com/austin
+
+Cox, M., & Haar, K. (2015). Inside Airbnb: Adding data to the debate. *Inside Airbnb Research Notes*. https://insideairbnb.com
+
+Edelman, B., Luca, M., & Svirsky, D. (2017). Racial discrimination in the sharing economy: Evidence from a field experiment. *American Economic Journal: Applied Economics*, *9*(2), 1–22. https://doi.org/10.1257/app.20160213
+
+Fradkin, A., Grewal, E., & Holtz, D. (2021). Reciprocity and unveiling in two-sided reputation systems: Evidence from an experiment on Airbnb. *Marketing Science*, *40*(6), 1013–1029. https://doi.org/10.1287/mksc.2021.1311
+
+Géron, A. (2022). *Hands-on machine learning with scikit-learn, Keras, and TensorFlow* (3rd ed.). O'Reilly Media.
+
+Ghose, A., Ipeirotis, P. G., & Li, B. (2012). Designing ranking systems for hotels on travel search engines by mining user-generated and crowdsourced content. *Marketing Science*, *31*(3), 493–520. https://doi.org/10.1287/mksc.1110.0700
+
+Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep learning*. MIT Press.
+
+Google. (2026). *Google Colaboratory*. https://colab.research.google.com
+
+Gorishniy, Y., Rubachev, I., Khrulkov, V., & Babenko, A. (2021). Revisiting deep learning models for tabular data. In *Advances in Neural Information Processing Systems 34* (pp. 18932–18943).
+
+Gurran, N., & Phibbs, P. (2017). When tourists move in: How should urban planners respond to Airbnb? *Journal of the American Planning Association*, *83*(1), 80–92. https://doi.org/10.1080/01944363.2016.1249011
+
+Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The elements of statistical learning: Data mining, inference, and prediction* (2nd ed.). Springer.
+
+Hoerl, A. E., & Kennard, R. W. (1970). Ridge regression: Biased estimation for nonorthogonal problems. *Technometrics*, *12*(1), 55–67. https://doi.org/10.1080/00401706.1970.10488634
+
+Horn, K., & Merante, M. (2017). Is home sharing driving up rents? Evidence from Airbnb in Boston. *Journal of Housing Economics*, *38*, 14–24. https://doi.org/10.1016/j.jhe.2017.08.002
+
+Kalehbasti, P. R., Nikolenko, L., & Rezaei, H. (2019). Airbnb price prediction using machine learning and sentiment analysis. In *Proceedings of the 2019 International Conference on Machine Learning and Data Mining*.
+
+Kohavi, R. (1995). A study of cross-validation and bootstrap for accuracy estimation and model selection. In *IJCAI*, *14*(2), 1137–1145.
+
+LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. *Nature*, *521*(7553), 436–444. https://doi.org/10.1038/nature14539
+
+Lee, D. (2016). How Airbnb short-term rentals exacerbate Los Angeles's affordable housing crisis. *Harvard Law & Policy Review*, *10*, 229–253.
+
+Li, J., Moreno, A., & Zhang, D. J. (2020). Agent behavior and the sharing economy: Truthful signals and quality detection. *Production and Operations Management*, *29*(1), 73–92. https://doi.org/10.1111/poms.13089
+
+Lundberg, S. M., & Lee, S.-I. (2017). A unified approach to interpreting model predictions. In *Advances in Neural Information Processing Systems 30* (pp. 4765–4774).
+
+Nieuwland, S., & van Melik, R. (2020). Regulating Airbnb: How cities deal with perceived negative externalities of short-term rentals. *Current Issues in Tourism*, *23*(7), 811–825. https://doi.org/10.1080/13683500.2018.1504899
+
+The pandas development team. (2024). *pandas: Powerful Python data analysis toolkit* (Version 2.x) [Computer software]. https://pandas.pydata.org
+
+Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L., Desmaison, A., Köpf, A., Yang, E., DeVito, Z., Raison, M., Tejani, A., Chilamkurthy, S., Steiner, B., Fang, L., … Chintala, S. (2019). PyTorch: An imperative style, high-performance deep learning library. In *Advances in Neural Information Processing Systems 32* (pp. 8024–8035).
+
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., Cournapeau, D., Brucher, M., Perrot, M., & Duchesnay, É. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research*, *12*, 2825–2830.
+
+Rosen, S. (1974). Hedonic prices and implicit markets: Product differentiation in pure competition. *Journal of Political Economy*, *82*(1), 34–55. https://doi.org/10.1086/260169
+
+Sheppard, S. (1999). Hedonic analysis of housing markets. In *Handbook of regional and urban economics* (Vol. 3, pp. 1595–1635). Elsevier. https://doi.org/10.1016/S1574-0080(99)80010-8
+
+Shwartz-Ziv, R., & Armon, A. (2022). Tabular data: Deep learning is not all you need. *Information Fusion*, *81*, 84–90. https://doi.org/10.1016/j.inffus.2021.11.011
+
+Sundararajan, A. (2016). *The sharing economy: The end of employment and the rise of crowd-based capitalism*. MIT Press.
+
+Tang, Y., Wang, B., & Gebraeel, N. (2020). Neural network approaches to short-term rental price prediction. *Expert Systems with Applications*, *144*, 113057. https://doi.org/10.1016/j.eswa.2019.113057
+
+Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. *Journal of the Royal Statistical Society: Series B*, *58*(1), 267–288. https://doi.org/10.1111/j.2517-6161.1996.tb02080.x
+
+Wachsmuth, D., & Weisler, A. (2018). Airbnb and the rent gap: Gentrification through the sharing economy. *Environment and Planning A: Economy and Space*, *50*(6), 1147–1170. https://doi.org/10.1177/0308518X18778038
+
+Yang, Y., Mao, Z., & Tang, J. (2018). Understanding guest satisfaction with urban hotel location. *Journal of Travel Research*, *57*(2), 243–259. https://doi.org/10.1177/0047287517691153
+
+Zervas, G., Proserpio, D., & Byers, J. W. (2017). The rise of the sharing economy: Estimating the impact of Airbnb on the hotel industry. *Journal of Marketing Research*, *54*(5), 687–705. https://doi.org/10.1509/jmr.15.0204
+
+---
+
 ## Appendix A. AI use disclosure
 
 This project used Anthropic's Claude (Opus 4.7) in a Claude Code session for three purposes. First, repository scaffolding: the README, requirements file, gitignore, and paper outline were generated by Claude. Second, notebook templating: Claude produced the initial section and step structure of `airbnb_price_prediction.ipynb`, along with the initial implementations of each cell. I reviewed every cell, fixed bugs in the Inside Airbnb download URL and the shap pin, and confirmed each step's output against my own reading of the data. Third, drafting assistance for this paper: Claude produced strawman text for each section, which I then rewrote in my own voice, corrected where the interpretation was wrong or overclaimed, and edited for tone. All empirical results, figures, numerical interpretations, and the final wording of this paper are my own work. The session transcript is available on request.
