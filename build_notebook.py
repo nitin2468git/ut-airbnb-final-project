@@ -92,7 +92,10 @@ Colab's base image has most of what we need. We only install `shap` explicitly (
 
 CELLS.append(code("""
 # Step 0.1 — Install any missing packages (Colab runs this once per session).
-!pip install -q shap==0.44.*
+# Colab ships with NumPy 2.x; pin shap to a NumPy-2-compatible release.
+# If you see "NumPy 1.x cannot be run in NumPy 2.0" after install, do
+# Runtime → Restart session once, then re-run from Step 0.2.
+!pip install -q -U "shap>=0.46"
 """))
 
 CELLS.append(code("""
